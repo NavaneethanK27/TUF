@@ -11,6 +11,7 @@ public class Merge_Sort {
     }
     public static void merge(int[] arr,int left,int mid,int right){
         int left_array_size = mid-left+1;
+
         int right_array_size = right-mid;
 
         int[] left_array = new int[left_array_size];
