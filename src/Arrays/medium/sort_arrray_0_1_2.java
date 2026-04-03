@@ -1,5 +1,5 @@
 package Arrays.medium;
-
+import java.util.*;
 public class sort_arrray_0_1_2 {
     public static void swap(int[] nums,int left,int right){
         int temp=nums[left];
@@ -14,11 +14,15 @@ public class sort_arrray_0_1_2 {
 
             if(nums[mid]==0){
                 swap(nums,low,mid);
+                low++;
+                mid++;
             }else if(nums[mid]==1){
                 mid++;
             }else{
                swap(nums,high,mid);
+               high--;
             }
         }
+        System.out.println(Arrays.toString(nums));
     }
 }
