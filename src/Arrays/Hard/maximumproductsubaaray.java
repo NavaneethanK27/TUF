@@ -13,7 +13,7 @@ public class maximumproductsubaaray {
         }
         System.out.println(max);
     }
-    public static void optimal(int[] nums){
+    public static void Better(int[] nums){
 //Time Complexity: O(N), every element of array is visited once.
 //Space Complexity: O(1), constant number of variables are used.
         int prefix=1;
@@ -29,8 +29,28 @@ public class maximumproductsubaaray {
         }
         System.out.println(ans);
     }
+    public static void optimal(int[] nums){
+        int minproduct=nums[0];
+        int maxproduct=nums[0];
+        int res=0;
+
+        for(int i=1;i<nums.length;i++){
+            int curr = nums[i];
+            if(curr<0){
+                int temp=maxproduct;
+                maxproduct=minproduct;
+                minproduct=temp;
+            }
+            maxproduct = Math.max(curr,maxproduct*curr);
+            minproduct = Math.min(curr,minproduct*curr);
+
+            res = Math.max(res,maxproduct);
+        }
+       System.out.println(res);
+    }
     public static void main(String[] args){
         int[] nums={-2,0,-1};
+        Better(nums);
         optimal(nums);
     }
 }
