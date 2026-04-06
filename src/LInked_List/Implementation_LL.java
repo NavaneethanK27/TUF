@@ -36,6 +36,11 @@ class LinkedList{
     }
     void insert_At_end(int data){
         Node new_node = new Node(data);
+        if(head == null){
+            head = new_node;
+            return;
+        }
+
         temp=head;
         while(temp.next!=null){
             temp=temp.next;
@@ -44,13 +49,15 @@ class LinkedList{
     }
 
     void deletion_at_head(){
-        temp = head;
-        head=head.next;
-        temp.next=null;
-        temp=head;
+        if(head == null) return;
+        head = head.next;
     }
 
     void deletion_at_last(){
+        if(head == null || head.next == null){
+            head = null;
+            return;
+        }
         temp=head;
         while(temp.next.next!=null){
             temp=temp.next;
@@ -101,8 +108,8 @@ class LinkedList{
 
     boolean palindrome(Node head){
         Node firsthalf=head;
-        Node mid = middle(temp);
-        Node Secondhalf=Reverse(mid);
+        Node mid = middle(head);
+        Node Secondhalf = Reverse(mid.next);
         while(Secondhalf!=null){
             if(firsthalf.data!=Secondhalf.data){
                 return false;
@@ -110,7 +117,48 @@ class LinkedList{
             firsthalf=firsthalf.next;
             Secondhalf=Secondhalf.next;
         }
-        return false;
+        return true;
+    }
+
+    public Node reverse_k_times(Node head,int k){
+        int count=0;
+        temp=head;
+        if(head == null) return null;
+        while(temp!=null){
+            temp=temp.next;
+            count++;
+        }
+        if(count<k)return head;
+
+        count=0;
+        Node curr = head;
+        Node prev=null;
+        Node front = null;
+        while (curr!=null && count<k){
+            front=curr.next;
+            curr.next=prev;
+            prev=curr;
+            curr=front;
+            count++;
+        }
+        head.next=reverse_k_times(curr,k);
+        return prev;
+    }
+
+    public  Node separate(Node head){
+        if(head==null) return head;
+        Node odd = head;
+        Node even=head.next;
+        Node evenhead=even;
+        while (even!=null && even.next!=null){
+            odd.next=even.next;
+            odd=odd.next;
+
+            even.next=odd.next;
+            even=even.next;
+        }
+        odd.next=evenhead;
+        return head;
     }
 }
 public class Implementation_LL {
@@ -157,9 +205,30 @@ public class Implementation_LL {
         for (int j : pal) {
             ll2.creation(j);
         }
+
         System.out.println();
         ll2.display(ll2.head);
         System.out.println();
         System.out.println(ll.palindrome(ll2.head));
+
+
+        int[] reverse_k={1,2,3,4,5,6};
+        LinkedList ll3 = new LinkedList();
+        for (int j :reverse_k) {
+            ll3.creation(j);
+        }
+        Node reversed=ll3.reverse_k_times(ll3.head,2);
+        ll3.display(reversed);
+
+
+
+        int[] even_odd={1,2,3,4,5,6};
+        LinkedList ll4 = new LinkedList();
+        for (int j :even_odd) {
+            ll4.creation(j);
+        }
+        System.out.println();
+        Node odd = ll4.separate(ll4.head);
+        ll4.display(odd);
     }
 }
