@@ -66,7 +66,6 @@ class LinkedList{
     }
 
     int  length(Node head){
-        int count=0;
         if(head==null){
             return 0;
         }
@@ -160,6 +159,26 @@ class LinkedList{
         odd.next=evenhead;
         return head;
     }
+
+    public Node rotate_list_k_times(Node head,int k){
+        int n=length(head);
+        if(k%n==0){return head;}
+        k=k%n;
+        int klen=n-k;
+        System.out.println(n);
+        temp=head;
+        for(int i=1;i<klen-1;i++){
+            temp=temp.next;
+        }
+        Node newhead = temp.next;
+        temp.next=null;
+        Node last=newhead;
+        while (last.next!=null){
+            last=last.next;
+        }
+        last.next=head;
+        return newhead;
+    }
 }
 public class Implementation_LL {
     public static void main(String[] args){
@@ -230,5 +249,14 @@ public class Implementation_LL {
         System.out.println();
         Node odd = ll4.separate(ll4.head);
         ll4.display(odd);
+
+        int[] rotate={1,2,3,4,5};
+        LinkedList ll5 = new LinkedList();
+        for (int j :rotate) {
+            ll5.creation(j);
+        }
+        System.out.println();
+        Node temp1=ll5.rotate_list_k_times(ll5.head,2);
+        ll5.display(temp1);
     }
 }
