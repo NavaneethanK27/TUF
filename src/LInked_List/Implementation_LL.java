@@ -2,6 +2,7 @@ package LInked_List;
 class Node{
     int data;
     Node next;
+    Node(){}
     Node(int data){
         this.data=data;
         this.next=null;
@@ -179,6 +180,31 @@ class LinkedList{
         last.next=head;
         return newhead;
     }
+
+    public Node add(Node l1,Node l2){
+        Node dummy = new Node(0);
+        temp=dummy;
+
+        int carry=0;
+        while(l1!=null || l2!=null || carry!=0){
+            int sum=0;
+            if(l1!=null){
+                sum+=l1.data;
+                l1=l1.next;
+            }
+            if(l2!=null){
+                sum+=l2.data;
+                l2=l2.next;
+            }
+            sum+=carry;
+            carry=sum/10;
+
+            Node new_node1 = new Node(sum%10);
+            temp.next=new_node1;
+            temp=temp.next;
+        }
+    return dummy.next;
+    }
 }
 public class Implementation_LL {
     public static void main(String[] args){
@@ -258,5 +284,24 @@ public class Implementation_LL {
         System.out.println();
         Node temp1=ll5.rotate_list_k_times(ll5.head,2);
         ll5.display(temp1);
+
+
+        int[] l1={2,4,3};
+        int[] l2={5,6,4};
+
+        LinkedList lll1=new LinkedList();
+        for (int j :l1) {
+            lll1.creation(j);
+        }
+
+        LinkedList lll2=new LinkedList();
+        for (int j :l2) {
+            lll2.creation(j);
+        }
+
+        //add
+        Node sum= lll1.add(lll1.head,lll2.head);
+        System.out.println();
+        lll1.display(sum);
     }
 }
