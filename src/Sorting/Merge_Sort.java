@@ -11,7 +11,7 @@ public class Merge_Sort {
     }
     public static void merge(int[] arr,int left,int mid,int right){
         int left_array_size = mid-left+1;
-
+        System.out.println(left_array_size);
         int right_array_size = right-mid;
 
         int[] left_array = new int[left_array_size];
@@ -20,13 +20,19 @@ public class Merge_Sort {
         for(int i=0;i<left_array_size;i++){
             left_array[i]=arr[left+i];
         }
+
+        System.out.println("left: "+Arrays.toString(left_array));
+
         for(int i=0;i<right_array_size;i++){
             right_array[i]=arr[mid+i+1];
         }
 
+        System.out.println("RIght: "+Arrays.toString(right_array));
+
         int i=0,j=0,k=left;
 
         while(i<left_array_size && j<right_array_size){
+
             if(left_array[i]<right_array[j]){
                 arr[k]=left_array[i];
                 i++;
@@ -36,6 +42,7 @@ public class Merge_Sort {
             }
             k++;
         }
+
        while(i<left_array_size){
            arr[k]=left_array[i];
            i++;
