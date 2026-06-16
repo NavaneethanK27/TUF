@@ -35,9 +35,9 @@ public class implement_stack_using_queue {
       for(int i:arr){
           s.push(i);
       }
-      System.out.println(s.pop());
-      System.out.println(s.top());
-      System.out.println(s.peek());
+//      System.out.println(s.pop());
+//      System.out.println(s.top());
+//      System.out.println(s.peek());
       s.display();
 
     }

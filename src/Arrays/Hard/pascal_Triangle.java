@@ -2,6 +2,7 @@ package Arrays.Hard;
 import java.util.*;
 public class pascal_Triangle {
 
+    //combination formula ncr;
     public static ArrayList<Integer> genreateallrow(int row){
         int ans = 1;
         ArrayList<Integer>list = new ArrayList<>();

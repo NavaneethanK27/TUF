@@ -18,6 +18,7 @@ public class spiral_matrix {
 
         ArrayList<Integer>list = new ArrayList<>();
         while (left<=right && top<=bottom) {
+
             for (int i = left; i <= right; i++) {
                 list.add(mat[top][i]);
             }
@@ -27,6 +28,7 @@ public class spiral_matrix {
                 list.add(mat[i][right]);
             }
             right--;
+
             if(top<=bottom){
             for (int i = right; i >= left; i--) {
                 list.add(mat[bottom][i]);

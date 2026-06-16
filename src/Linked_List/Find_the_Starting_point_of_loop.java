@@ -1,5 +1,4 @@
-package LInked_List;
-import java.util.*;
+package Linked_List;
 
 class ListNode {
     int val;

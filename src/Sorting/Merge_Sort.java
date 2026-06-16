@@ -3,7 +3,7 @@ import java.util.*;
 public class Merge_Sort {
     public static void merge_sort(int[] arr,int left,int right){
         if(left<right) {
-            int mid = (left + right) / 2;
+            int mid = left +(right-left)/ 2;
             merge_sort(arr, left, mid);
             merge_sort(arr, mid + 1, right);
             merge(arr, left, mid, right);
@@ -11,7 +11,7 @@ public class Merge_Sort {
     }
     public static void merge(int[] arr,int left,int mid,int right){
         int left_array_size = mid-left+1;
-        System.out.println(left_array_size);
+//        System.out.println(left_array_size);
         int right_array_size = right-mid;
 
         int[] left_array = new int[left_array_size];
@@ -21,13 +21,13 @@ public class Merge_Sort {
             left_array[i]=arr[left+i];
         }
 
-        System.out.println("left: "+Arrays.toString(left_array));
+//        System.out.println("left: "+Arrays.toString(left_array));
 
         for(int i=0;i<right_array_size;i++){
             right_array[i]=arr[mid+i+1];
         }
 
-        System.out.println("RIght: "+Arrays.toString(right_array));
+//        System.out.println("RIght: "+Arrays.toString(right_array));
 
         int i=0,j=0,k=left;
 
@@ -48,6 +48,7 @@ public class Merge_Sort {
            i++;
            k++;
        }
+
        while (j<right_array_size){
            arr[k]=right_array[j];
            j++;

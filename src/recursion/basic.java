@@ -50,6 +50,14 @@ public class basic {
             return count_zero(n/10,count);
         }
     }
+    public static void print_1_99(int n){
+        if(n==100){
+            return;
+        }
+
+        System.out.print(n+" ");
+        print_1_99(n+1);
+    }
     public static void main(String[] args){
         int n=5;
 //        print_1_n(n);
@@ -69,5 +77,6 @@ public class basic {
 //       System.out.println(reverse(123,0));
 
        System.out.println(count_zero(2002,0));
+       print_1_99(1);
     }
 }
